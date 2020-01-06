@@ -13,7 +13,8 @@ Base: https://gigapetbw4.herokuapp.com/api
 
 Registration info:
 
-
+| Required          |
+| ----------------- |
 | username (unique) |
 | password          |
 
@@ -23,16 +24,9 @@ Registration info:
 
 <!-- | Method   | Type               | Endpoint                                 | Send                                           | Returns                    |
 | -------- | ------------------ | ---------------------------------------- | ---------------------------------------------- | -------------------------- |
-| Items    |                    |                                          |                                                |                            |
 | POST     | Add Item           | /`:sellerId`/items                       | Item Info*                                     | Message, Item object       |
 | PUT      | Update Item        | /items/`:itemId`                         | Item Info*                                     | Message, Item object       |
 | DELETE   | Delete Item        | /items/`:itemId`                         | Item ID                                        | Message                    |
-| Auctions |                    |                                          |                                                |                            |
-| Post     | Add Auction        | /`:sellerId`/`:itemId`/auctions          | Seller ID, Item ID, auction_start, auction_end | message, newAuction object |
-| PUT      | Update auction_end | /auctions/`auctionId`                    | Auction ID, auction_end                        | Message                    |
-| Delete   | Delete Auction     | /auctions/`:auctionId`                   | Auction ID                                     | Message                    |
-| Users    |                    |                                          |                                                |                            |
-| DELETE   | Removes User       | /api/sellers/`:id` or /api/bidders/`:id` | ID                                             | Message                    |
 
 Item Info
 

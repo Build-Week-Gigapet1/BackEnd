@@ -20,12 +20,11 @@ exports.up = function(knex) {
     .createTable("petfood", food => {
       food.increments();
 
-      food.integer("dairy", 128);
-      food.integer("grains", 128);
-      food.integer("vegetables", 128);
-      food.integer("fruit", 128);
-      food.integer("meat", 128);
-      food.integer("sweets", 128);
+      food.string("food_category", 128).notNullable();
+
+      food.string("food_name", 128).notNullable();
+
+      food.integer("food_amount");
 
       food
         .integer("pet_id")
@@ -39,5 +38,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTableIfExists("pet");
+  return knex.schema.dropTableIfExists("pet").dropTableIfExists("petfood");
 };
