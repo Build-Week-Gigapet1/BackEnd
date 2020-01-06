@@ -16,6 +16,8 @@
     "helmet": "^3.21.2",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.20.1",
+    "pg": "^7.17.0",
+    "postgres": "^1.0.1",
     "sqlite3": "^4.1.0"
   },
   "devDependencies": {

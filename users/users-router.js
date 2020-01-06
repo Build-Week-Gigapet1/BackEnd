@@ -13,7 +13,7 @@ router.get('/pet', restricted, (req, res) => {
 
 router.post('/pet', restricted, (req, res) => {
   if(req.body.petname || req.body.petname !== ""){
-    Users.addPet(req.body)
+    Users.addPet(req.body.petname)
     .then(pet => {
       res.status(201).json(pet);
     })
