@@ -2,7 +2,7 @@
 
 ## Endpoints
 
-Base: https://gigapetbw4.herokuapp.com/api
+Base: https://gigapetbw4.herokuapp.com
 
 ### Auth Routes
 
@@ -22,17 +22,9 @@ Registration info:
 
 *Token must be sent to access*
 
-<!-- | Method   | Type               | Endpoint                                 | Send                                           | Returns                    |
-| -------- | ------------------ | ---------------------------------------- | ---------------------------------------------- | -------------------------- |
-| POST     | Add Item           | /`:sellerId`/items                       | Item Info*                                     | Message, Item object       |
-| PUT      | Update Item        | /items/`:itemId`                         | Item Info*                                     | Message, Item object       |
-| DELETE   | Delete Item        | /items/`:itemId`                         | Item ID                                        | Message                    |
+| Method   | Type               | Endpoint                                 | Send                                           | Returns                          |
+| -------- | ------------------ | ---------------------------------------- | ---------------------------------------------- | -------------------------------- |
+| GET      | get pet            | /users/pet                               | username of pet owner                          | pet name with anything fed to it |
 
-Item Info
 
-- item_name - required
-- description - required
-- img_url - optional
-- price - required
-- item_end_time - required -->
 
