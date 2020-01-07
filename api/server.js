@@ -11,11 +11,11 @@ server.use(helmet());
 server.use(express.json());
 server.use(cors());
 
-server.use('/auth', authRouter);
-server.use('/users', usersRouter);
+server.use('/', authRouter);
+server.use('/auth', usersRouter);
 
-server.get('/', (req, res) => {
-  res.send("It's working! It's working!");
-});
+// server.get('/', (req, res) => {
+//   res.send("It's working! It's working!");
+// });
 
 module.exports = server;

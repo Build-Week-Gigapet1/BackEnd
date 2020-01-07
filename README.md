@@ -21,7 +21,9 @@ Registration info:
 
 ## Restricted Routes
 
-*Token must be sent to access*
+Base: https://gigapetbw4.herokuapp.com/auth
+
+*Token must be sent in an authentication header to access*
 
 | Method   | Type               | Endpoint              | Send                                                       | Returns                                      |
 | -------- | ------------------ | --------------------- | ---------------------------------------------------------- | -------------------------------------------- |
