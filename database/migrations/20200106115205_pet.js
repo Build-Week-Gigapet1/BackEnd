@@ -1,17 +1,17 @@
 exports.up = function(knex) {
   return knex.schema
-    .createTable("petfood", food => {
-      food.increments();
+    .createTable("petfood", tbl => {
+      tbl.increments();
 
-      food.string("date_fed", 128).notNullable();
+      tbl.string("date_fed", 128).notNullable();
 
-      food.string("food_category", 128).notNullable();
+      tbl.string("food_category", 128).notNullable();
 
-      food.string("food_name", 128).notNullable();
+      tbl.string("food_name", 128).notNullable();
 
-      food.integer("food_amount").notNullable();
+      tbl.integer("food_amount").notNullable();
 
-      food
+      tbl
         .integer("user_id")
         .unsigned()
         .notNullable()
