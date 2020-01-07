@@ -5,7 +5,9 @@ module.exports = {
   getFood,
   findBy,
   findById,
-  feeding
+  feeding,
+  update,
+  remove
 };
 
 function getFood(id) {
@@ -43,4 +45,11 @@ function feedById(id) {
   return db('petfood')
     .where({ id })
     .first();
+}
+
+async function update(changes, userID, feedingID) {
+  await db('petfood')
+    .join('users', petfood.user_id)
+
+  return getFood(userID);
 }
