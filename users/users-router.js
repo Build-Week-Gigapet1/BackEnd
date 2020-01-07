@@ -38,6 +38,7 @@ router.put('/:id/pet/:feedingID', restricted, (req, res) => {
       res.status(201).json(feed);
     })
     .catch(err => {
+      console.log(err);
       res.status(500).json({ message: "Failed to update pet feeding", err })
     })
   } else {

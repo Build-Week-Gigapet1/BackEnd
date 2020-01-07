@@ -1,4 +1,4 @@
-const db = require('../database/dbConfig.js');
+const db = require("../database/dbConfig.js");
 
 module.exports = {
   add,
@@ -11,37 +11,35 @@ module.exports = {
 };
 
 function getFood(id) {
-  return db('petfood')
-  .join('users', 'users.id', 'petfood.user_id')
-  .where('users.id', id);
+  return db("petfood")
+    .join("users", "users.id", "petfood.user_id")
+    .where("users.id", id);
 }
 
 function findBy(filter) {
-  return db('users').where(filter);
+  return db("users").where(filter);
 }
 
 async function add(user) {
-  const id = await db('users').insert(user);
-  //console.log(id);
+  await db("users").insert(user);
   const newUsers = await getAllUsers();
   return newUsers[newUsers.length - 1];
 }
 
 function getAllUsers() {
-  return db('users');
+  return db("users");
 }
 
 function findById(id) {
-  return db('users')
+  return db("users")
     .where({ id })
     .first();
 }
 
 async function feeding(food, userID) {
+  const feed = { ...food, user_id: userID };
 
-  const feed = {...food, user_id: userID};
-
-  const id = await db('petfood').insert(feed);
+  await db("petfood").insert(feed);
 
   const newFeeding = await getFood(userID);
 
@@ -49,19 +47,25 @@ async function feeding(food, userID) {
 }
 
 function feedById(id) {
-  return db('petfood')
+  return db("petfood")
     .where({ id })
     .first();
 }
 
 async function update(changes, userID, feedingID) {
-  await db('petfood as p')
-    .where('p.user_id', userID && 'p.id', feedingID)
-    .update(changes, '*');
+  await db("petfood")
+    .where({ user_id: userID, id: feedingID })
+    .update(changes, "*");
 
   return getFood(userID);
 }
 
-function remove(userID, feedingID) {
-  return db('petfood')
+async function remove(userID, feedingID) {
+  await db("petfood")
+    .where({ user_id: userID, id: feedingID })
+    .del();
+
+  const newFeeding = await getFood(userID);
+
+  return newFeeding;
 }
