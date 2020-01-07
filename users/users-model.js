@@ -48,8 +48,13 @@ function feedById(id) {
 }
 
 async function update(changes, userID, feedingID) {
-  await db('petfood')
-    .join('users', petfood.user_id)
+  await db('petfood as p')
+    .where('p.user_id', userID && 'p.id', feedingID)
+    .update(changes, '*');
 
   return getFood(userID);
+}
+
+function remove(userID, feedingID) {
+  return db('petfood')
 }
