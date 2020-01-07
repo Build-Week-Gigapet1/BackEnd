@@ -7,11 +7,12 @@ module.exports = {
   findById,
   feeding,
   update,
-  remove
+  remove,
+  getAllUsers
 };
 
 function getFood(id) {
-  return db("petfood")
+  return db("petfood as p").select('p.id', 'p.date_fed', 'p.food_category', 'p.food_name', 'p.food_amount')
     .join("users", "users.id", "petfood.user_id")
     .where("users.id", id);
 }

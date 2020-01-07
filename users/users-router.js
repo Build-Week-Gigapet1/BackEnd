@@ -3,6 +3,16 @@ const router = require('express').Router();
 const Users = require('./users-model.js');
 const restricted = require('../auth/restricted-middleware.js');
 
+router.get('/users', (req, res) => {
+  Users.getAllUsers()
+  .then(users => {
+    res.status(200).json(users);
+  })
+  .catch(err => {
+    res.status(500).json({ message: 'Error getting users.' })
+  })
+});
+
 router.get('/:id/pet', restricted, (req, res) => {
   Users.getFood(req.params.id)
     .then(pet => {
