@@ -23,7 +23,12 @@ function findBy(filter) {
 async function add(user) {
   const id = await db('users').insert(user);
   console.log(id);
-  return findById(id);
+  const newUsers = await getAllUsers();
+  return newUsers[newUsers.length - 1];
+}
+
+function getAllUsers() {
+  return db('users');
 }
 
 function findById(id) {
