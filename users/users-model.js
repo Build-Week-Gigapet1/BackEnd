@@ -22,7 +22,7 @@ function findBy(filter) {
 
 async function add(user) {
   const id = await db('users').insert(user);
-  console.log(id);
+  //console.log(id);
   const newUsers = await getAllUsers();
   return newUsers[newUsers.length - 1];
 }
@@ -41,9 +41,11 @@ async function feeding(food, userID) {
 
   const feed = {...food, user_id: userID};
 
-  const [id] = await db('petfood').insert(feed);
+  const id = await db('petfood').insert(feed);
 
-  return feedById(id);
+  const newFeeding = await getFood(userID);
+
+  return newFeeding;
 }
 
 function feedById(id) {
