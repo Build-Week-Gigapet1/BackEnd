@@ -2,17 +2,16 @@ const db = require('../database/dbConfig.js');
 
 module.exports = {
   add,
-  findPet,
+  getFood,
   findBy,
   findById,
-  addPet
+  feeding
 };
 
-function findPet(user) {
-  return db('pet').select('pet.petname', 'petfood.food_category', 'petfood.food_name', 'petfood.food_amount')
-  .join('petfood', 'petfood.pet_id', 'pet.id')
-  .join('users', 'pet.user_id', 'users.id')
-  .where('users.username', user);
+function getFood(id) {
+  return db('petfood')
+  .join('users', 'users.id', 'petfood.user_id')
+  .where('users.id', id);
 }
 
 function findBy(filter) {
@@ -31,14 +30,17 @@ function findById(id) {
     .first();
 }
 
-async function addPet(pet) {
-  const [id] = await db('pet').insert(pet)
+async function feeding(food, userID) {
 
-  return getPetById(id);
+  const feed = {...food, user_id: userID};
+
+  const [id] = await db('petfood').insert(feed);
+
+  return feedById(id);
 }
 
-function getPetById(id) {
-  return db('pet')
-  .where({ id })
-  .first();
+function feedById(id) {
+  return db('petfood')
+    .where({ id })
+    .first();
 }
