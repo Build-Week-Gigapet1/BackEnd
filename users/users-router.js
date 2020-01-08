@@ -18,7 +18,10 @@ router.get('/:id/pet', restricted, (req, res) => {
     .then(pet => {
       res.status(200).json(pet);
     })
-    .catch(err => res.send(err));
+    .catch(err => {
+      console.log(err);
+      res.send(err)
+    });
 });
 
 router.post('/:id/pet', restricted, (req, res) => {
@@ -26,11 +29,12 @@ router.post('/:id/pet', restricted, (req, res) => {
     || req.body.food_category || req.body.food_category !== ""
     || req.body.food_name || req.body.food_name !== ""
     || req.body.food_amount || req.body.food_amount !== ""){
-    Users.feeding(req.body, req.params.id)
+    Users.feeding(req.body, parseInt(req.params.id))
     .then(feed => {
       res.status(201).json(feed);
     })
     .catch(err => {
+      console.log(err);
       res.status(500).json({ message: "Failed to create new pet feeding", err })
     })
   } else {
