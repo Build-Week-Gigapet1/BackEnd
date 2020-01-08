@@ -8,8 +8,8 @@ Base: https://gigapetbw4.herokuapp.com
 
 | Method | Type     | Endpoint   | Send                                | Returns                                                                          |
 | ------ | -------- | ---------- | ----------------------------------- | -------------------------------------------------------------------------------- |
-| POST   | Register | /register/ | See below                           | Message: `res.data.message`, Token: `res.data.token`, User object: `res.data`    |
-| POST   | Login    | /login/    | JSON with "username" and "password" | Message: `res.data.message`, Token: `res.data.token`, User object: `res.data`    |
+| POST   | Register | /register/ | See below                           | Message: `res.data.message`, Token: `res.data.token`, User object: `res.data.saved`    |
+| POST   | Login    | /login/    | JSON with "username" and "password" | Message: `res.data.message`, Token: `res.data.token`, User object: `res.data.user`    |
 
 Registration info:
 

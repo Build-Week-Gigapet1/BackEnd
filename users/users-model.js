@@ -13,7 +13,7 @@ module.exports = {
 
 function getFood(id) {
   return db("petfood as p").select('p.id', 'p.date_fed', 'p.food_category', 'p.food_name', 'p.food_amount')
-    .join("users", "users.id", "petfood.user_id")
+    .join("users", "users.id", "p.user_id")
     .where("users.id", id);
 }
 
@@ -39,11 +39,11 @@ function findById(id) {
 
 async function feeding(food, userID) {
   const feed = { ...food, user_id: userID };
-
-  await db("petfood").insert(feed);
+//console.log(feed);
+  const id = await db("petfood").insert(feed);
 
   const newFeeding = await getFood(userID);
-
+  
   return newFeeding;
 }
 
@@ -70,3 +70,4 @@ async function remove(userID, feedingID) {
 
   return newFeeding;
 }
+
